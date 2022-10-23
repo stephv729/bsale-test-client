@@ -16,11 +16,14 @@ function renderCategory({ name, id }) {
 
 function render() {
   const categories = categoriesProvider.categories;
+  const sortedCategories = categories.sort((a, b) =>
+    a.name.normalize().localeCompare(b.name.normalize())
+  );
   return `
   <aside class="menu">
       <span class="content-lg overline filter">Categories</span>
       <div class="js-menu-categories">
-        ${categories
+        ${sortedCategories
           .map((category) => {
             return renderCategory(category);
           })
