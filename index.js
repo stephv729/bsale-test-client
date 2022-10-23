@@ -1,5 +1,5 @@
-import { tokenKey } from "./config.js";
-import DOMHandler from "./dom-handler.js";
+import { tokenKey } from "./scripts/config.js";
+import DOMHandler from "./scripts/dom-handler.js";
 
 const LoginPage = "<div>Login</div>"
 const HomePage = "<div>HomePage</div>"
