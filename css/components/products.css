@@ -29,6 +29,7 @@
   height: 12.5rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  object-fit: contain;
 }
 
 .product-card .data-n-btn-container {
@@ -47,7 +48,7 @@
 
 .product-card .discount-label {
   position: absolute;
-  width: 8rem;
+  width: 4.5rem;
   height: 1.75rem;
   border-top-right-radius: 0.5rem;
   background: var(--primary-500);
