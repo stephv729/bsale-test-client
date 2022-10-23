@@ -5,7 +5,7 @@ import DOMHandler from "../dom-handler.js";
 function renderCategory({ name, id }) {
   return `
       <div class="menu-item">
-        <a href="#" data-id=${id} class="content-md overline">
+        <a href="#" data-id=${id} class="content-xs overline">
           <span class="js-category">${name}</span>
         </a>
       </div>
@@ -15,12 +15,15 @@ function renderCategory({ name, id }) {
 function render() {
   const categories = categoriesProvider.categories;
   return `
-  <aside class="menu js-menu-categories">
-    ${categories
-      .map((category) => {
-        return renderCategory(category);
-      })
-      .join("")}
+  <aside class="menu">
+      <span class="content-lg overline filter">Categories</span>
+      <div class="js-menu-categories">
+        ${categories
+        .map((category) => {
+          return renderCategory(category);
+        })
+        .join("")}
+      </div>
   </aside>
   `;
 }
@@ -35,7 +38,7 @@ function menuItemListener() {
       categoriesProvider.currentCategory = id;
       try {
         await productsProvider.fecthProductsByCategories();
-        DOMHandler.reload()
+        DOMHandler.reload();
       } catch (error) {
         console.log(error);
       }

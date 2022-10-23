@@ -1,3 +1,14 @@
+.menu {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menu .filter {
+  color: var(--primary-500);
+}
+
 .menu-item a {
   padding: 0.5rem;
   display: flex;
@@ -9,8 +20,8 @@
   text-decoration: none;
 }
 
-.menu-item :hover{
-     background-color: var(--primary-300);
+.menu-item :hover {
+  background-color: var(--primary-200);
 }
 
 .menu-item :focus {
@@ -18,5 +29,5 @@
 }
 
 .menu-item :visited {
-  color:var(--secondary-400);
+  color: var(--secondary-400);
 }
