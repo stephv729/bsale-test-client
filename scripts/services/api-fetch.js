@@ -1,4 +1,4 @@
-import { BASE_URI, tokenKey } from "../config";
+import { BASE_URI, tokenKey } from "../config.js";
 export default async function apiFetch(
   endpoint,
   { method, headers, body } = {}
