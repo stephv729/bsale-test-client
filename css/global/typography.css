@@ -58,16 +58,15 @@ body {
   line-height: 1.75rem;
 }
 
+.content-md {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .content-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-
-.content-roboto {
-    font-size: 0.75rem;
-    line-height: 1.25rem;
-}
-
 .content-xs {
   font-size: 0.75rem;
   line-height: 1rem;
