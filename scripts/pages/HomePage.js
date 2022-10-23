@@ -5,7 +5,10 @@ function render() {
   return `
   <div>
     ${Header}
-    <div>${CategoriesMenu}</div>
+    <div class="main-container">
+      ${CategoriesMenu}
+      <div>products</div>
+    </div>
   </div>
   `;
 }
@@ -13,6 +16,9 @@ function render() {
 const HomePage = {
   toString() {
     return render();
+  },
+  addListeners() {
+    CategoriesMenu.addListeners();
   },
 };
 

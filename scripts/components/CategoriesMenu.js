@@ -13,7 +13,7 @@ function renderCategory({ name, id }) {
 function render() {
   const categories = categoriesProvider.categories;
   return `
-  <aside class="menu">
+  <aside class="menu js-menu-categories">
     ${categories
       .map((category) => {
         return renderCategory(category);
@@ -23,9 +23,24 @@ function render() {
   `;
 }
 
+function menuItemListener() {
+  const menuItems = document.querySelectorAll(".js-menu-categories");
+  menuItems.forEach((menuItem) =>
+    menuItem.addEventListener("click", async (event) => {
+      const menuItemLink = event.target.closest("[data-id]");
+      if (!menuItemLink) return;
+      const id = menuItemLink.dataset.id
+      categoriesProvider.currentCategory = id
+    })
+  );
+}
+
 const CategoriesMenu = {
   toString() {
     return render();
+  },
+  addListeners() {
+    menuItemListener();
   },
 };
 
