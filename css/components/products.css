@@ -1,0 +1,78 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.product-card {
+  position: relative;
+  width: 18.75rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  border-radius: 0.5rem;
+  background-color: var(--primary-300);
+  cursor: pointer;
+  user-select: none;
+}
+
+.product-card .img-container {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--primary-100);
+}
+
+.product-card .img-container .product-img {
+  width: 100%;
+  height: 12.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.product-card .data-n-btn-container {
+  width: 100%;
+  height: 7.5rem;
+  padding: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 80% 1fr;
+}
+
+.product-card .add-to-cart-btn {
+  align-self: flex-end;
+}
+
+.product-card .discount-label {
+  position: absolute;
+  width: 8rem;
+  height: 1.75rem;
+  border-top-right-radius: 0.5rem;
+  background: var(--primary-500);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  color: var(--primary-100);
+}
+
+.product-card .discount-icon,
+.product-card .price-icon {
+  height: 1rem;
+  object-fit: cover;
+}
+
+.product-card .data-container .product-name,
+.product-card .data-container .product-price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.product-card .data-container .product-price {
+  color: var(--secondary-400);
+}
