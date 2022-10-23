@@ -1,3 +1,5 @@
+import productsProvider from "../context/products-context.js";
+
 function renderProduct({ id, name, url_image, price, discount }) {
   const fixedPrice = (price / 100).toFixed(2);
   return `
@@ -36,83 +38,11 @@ function renderProduct({ id, name, url_image, price, discount }) {
    </div>`;
 }
 
-const dummyProducts = [
-  {
-    id: 5,
-    name: "ENERGETICA MR BIG",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
-    price: 1490.0,
-    discount: 20,
-    category: 1,
-  },
-  {
-    id: 6,
-    name: "ENERGETICA RED BULL",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/redbull8381.jpg",
-    price: 1490.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 7,
-    name: "ENERGETICA SCORE",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/logo7698.png",
-    price: 1290.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 34,
-    name: "ENERGETICA MONSTER RIPPER",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/mosterriper0436.jpg",
-    price: 1990.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 35,
-    name: "ENERGETICA MAKKA DRINKS",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/makka-drinks-250ml0455.jpg",
-    price: 1190.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 36,
-    name: "ENERGETICA MONSTER VERDE",
-    url_image:
-      "https://dojiw2m9tvv09.cloudfront.net/11132/product/monsterverde0476.jpg",
-    price: 1990.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 77,
-    name: "ENERGETICA MONSTER RIPPER",
-    url_image: "",
-    price: 1990.0,
-    discount: 0,
-    category: 1,
-  },
-  {
-    id: 79,
-    name: "ENERGETICA MONSTER VERDE",
-    url_image: "",
-    price: 1990.0,
-    discount: 0,
-    category: 1,
-  },
-];
-
 function render() {
+  const products = productsProvider.products
   return `
   <div class="product-list">
-  ${dummyProducts
+  ${products
     .map((product) => {
       return renderProduct(product);
     })
