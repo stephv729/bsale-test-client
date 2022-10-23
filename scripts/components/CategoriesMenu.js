@@ -19,10 +19,10 @@ function render() {
       <span class="content-lg overline filter">Categories</span>
       <div class="js-menu-categories">
         ${categories
-        .map((category) => {
-          return renderCategory(category);
-        })
-        .join("")}
+          .map((category) => {
+            return renderCategory(category);
+          })
+          .join("")}
       </div>
   </aside>
   `;
@@ -31,17 +31,23 @@ function render() {
 function menuItemListener() {
   const menuItems = document.querySelectorAll(".js-menu-categories");
   menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", async (event) => {
+    menuItem.addEventListener("click", (event) => {
       const menuItemLink = event.target.closest("[data-id]");
       if (!menuItemLink) return;
       const id = menuItemLink.dataset.id;
       categoriesProvider.currentCategory = id;
-      try {
-        await productsProvider.fecthProductsByCategories();
-        DOMHandler.reload();
-      } catch (error) {
-        console.log(error);
-      }
+      productsProvider.status = "loading";
+      DOMHandler.reload();
+      productsProvider
+        .fecthProductsByCategories()
+        .then(() => {
+          productsProvider.status = "success";
+          DOMHandler.reload();
+        })
+        .catch((error) => {
+          productsProvider.status = "error";
+          console.log(error);
+        });
     })
   );
 }

@@ -1,4 +1,5 @@
 import productsProvider from "../context/products-context.js";
+import Loader from "./Loader.js";
 
 function renderProduct({ id, name, url_image, price, discount }) {
   const fixedPrice = (price / 100).toFixed(2);
@@ -39,14 +40,24 @@ function renderProduct({ id, name, url_image, price, discount }) {
 }
 
 function render() {
-  const products = productsProvider.products
+  const { products, status } = productsProvider;
   return `
   <div class="product-list">
-  ${products
-    .map((product) => {
-      return renderProduct(product);
-    })
-    .join("")}
+  ${status === "loading" ? Loader : ""}
+  ${
+    status === "success"
+      ? products
+          .map((product) => {
+            return renderProduct(product);
+          })
+          .join("")
+      : ""
+  }
+  ${
+    status === "error"
+      ? "<span>We are sorry. Products couldn't be loaded</span>"
+      : ""
+  }
   </div>
   `;
 }
