@@ -1,4 +1,4 @@
-import { getCategories } from "./services/categories-services.js";
+import { getCategories } from "../services/categories-services.js";
 
 async function fetchCategories() {
   const categories = await getCategories();
