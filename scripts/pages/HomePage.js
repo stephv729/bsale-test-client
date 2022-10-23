@@ -4,7 +4,7 @@ import ProductsList from "../components/ProductsList.js";
 
 function render() {
   return `
-  <div>
+  <div class="section">
     ${Header}
     <div class="main-container">
       ${CategoriesMenu}
