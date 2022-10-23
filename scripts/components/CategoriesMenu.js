@@ -3,7 +3,7 @@ import categoriesProvider from "../context/categories-context.js";
 function renderCategory({ name, id }) {
   return `
       <div class="menu-item">
-        <a href="#" data-id=${id} class="content-md">
+        <a href="#" data-id=${id} class="content-md overline">
           <span class="js-category">${name}</span>
         </a>
       </div>
