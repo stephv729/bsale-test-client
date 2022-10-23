@@ -4,7 +4,9 @@ import DOMHandler from "../dom-handler.js";
 
 function renderCategory({ name, id }) {
   return `
-      <div class="menu-item">
+      <div class="menu-item ${
+        +categoriesProvider.currentCategory === +id ? "active" : ""
+      }">
         <a href="#" data-id=${id} class="content-xs overline">
           <span class="js-category">${name}</span>
         </a>
