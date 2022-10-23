@@ -31,7 +31,7 @@ function renderProduct({ id, name, url_image, price, discount }) {
           </div>
         </div>
         <a href="#" class="add-to-cart-btn">
-         add to cart
+        <img src="assets/cart-icon.svg" alt="add to cart" class="cart-icon">
          </a>
       </div>
     </a>

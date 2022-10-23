@@ -65,6 +65,13 @@
   object-fit: cover;
 }
 
+.product-card .cart-icon {
+  height: 2rem;
+  object-fit: contain;
+  margin-bottom: 00.5rem;
+  z-index: 999;
+}
+
 .product-card .data-container .product-name,
 .product-card .data-container .product-price {
   display: flex;
