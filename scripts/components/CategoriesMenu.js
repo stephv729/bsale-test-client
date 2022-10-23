@@ -1,4 +1,6 @@
 import categoriesProvider from "../context/categories-context.js";
+import productsProvider from "../context/products-context.js";
+import DOMHandler from "../dom-handler.js";
 
 function renderCategory({ name, id }) {
   return `
@@ -29,8 +31,14 @@ function menuItemListener() {
     menuItem.addEventListener("click", async (event) => {
       const menuItemLink = event.target.closest("[data-id]");
       if (!menuItemLink) return;
-      const id = menuItemLink.dataset.id
-      categoriesProvider.currentCategory = id
+      const id = menuItemLink.dataset.id;
+      categoriesProvider.currentCategory = id;
+      try {
+        await productsProvider.fecthProductsByCategories();
+        DOMHandler.reload()
+      } catch (error) {
+        console.log(error);
+      }
     })
   );
 }
