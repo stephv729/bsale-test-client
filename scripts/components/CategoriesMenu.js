@@ -2,9 +2,9 @@ import categoriesProvider from "../context/categories-context.js";
 
 function renderCategory({ name, id }) {
   return `
-      <div>
-        <a href="#" data-id=${id}>
-          <span class="js-contact-show">${name}</span>
+      <div class="menu-item">
+        <a href="#" data-id=${id} class="content-md">
+          <span class="js-category">${name}</span>
         </a>
       </div>
   `;
@@ -13,13 +13,13 @@ function renderCategory({ name, id }) {
 function render() {
   const categories = categoriesProvider.categories;
   return `
-  <div>
+  <aside class="menu">
     ${categories
       .map((category) => {
         return renderCategory(category);
       })
       .join("")}
-  </div>
+  </aside>
   `;
 }
 
