@@ -47,6 +47,7 @@ function menuItemListener() {
         .fecthProductsByCategories()
         .then(() => {
           productsProvider.status = "success";
+          productsProvider.queryValue = "";
           DOMHandler.reload();
         })
         .catch((error) => {
