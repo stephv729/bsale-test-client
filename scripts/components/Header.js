@@ -1,5 +1,11 @@
+import SearchInput from "./SearchInput.js";
+
 function render() {
-  return `<span class="heading--lg">BSale Test Online Store</span>`;
+  return `<div class="header-container">
+  <span class="heading--md">BSale Test Online Store</span>
+  ${SearchInput}
+  </div>
+  `;
 }
 
 const Header = {
