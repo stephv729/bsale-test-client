@@ -47,6 +47,7 @@ function search() {
     .catch((error) => {
       productsProvider.status = "error";
       console.log(error);
+      DOMHandler.reload();
     });
 }
 
