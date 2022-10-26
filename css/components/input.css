@@ -6,6 +6,17 @@
   gap: 0.5rem;
   border: 1px solid var(--secondary-300);
 }
+
+.input-container input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-secondary);
+}
+
+.input-container input ::placeholder {
+  color: var(--secondary-200);
+}
 .input-container .right-icon {
   height: 1rem;
 }
