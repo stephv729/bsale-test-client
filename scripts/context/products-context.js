@@ -1,4 +1,4 @@
-import { getProductsByCategory } from "../services/products-services.js";
+import { getProductsByCategory, getProductsByName } from "../services/products-services.js";
 import categoriesProvider from "./categories-context.js";
 
 async function fecthProductsByCategories() {
