@@ -19,6 +19,7 @@ const HomePage = {
     return render();
   },
   addListeners() {
+    Header.addListeners();
     CategoriesMenu.addListeners();
   },
 };
