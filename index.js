@@ -7,7 +7,7 @@ import HomePage from "./scripts/pages/HomePage.js";
 async function init() {
   try {
     await categoriesProvider.fetchCategories()
-    await productsProvider.fecthProductsByCategories()
+    await productsProvider.fecthProducts()
     DOMHandler.load(HomePage);
   } catch (error) {
     console.log(error);
