@@ -1,10 +1,17 @@
 import {
+  getProducts,
   getProductsByCategory,
   getProductsByName,
   getProductsByNameAndCategory,
 } from "../services/products-services.js";
 
 import categoriesProvider from "./categories-context.js";
+
+async function fecthProducts() {
+  const products = await getProducts();
+  this.products = products;
+  this.status = "success";
+}
 
 async function fecthProductsByCategories() {
   const products = await getProductsByCategory(
@@ -29,6 +36,7 @@ const productsProvider = {
   products: [],
   status: "idle",
   queryValue: "",
+  fecthProducts,
   fecthProductsByCategories,
   fecthProductsBySearch,
 };
