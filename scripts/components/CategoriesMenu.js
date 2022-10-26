@@ -28,6 +28,14 @@ function render() {
             return renderCategory(category);
           })
           .join("")}
+          
+          <div class="menu-item ${
+            +categoriesProvider.currentCategory ? "" : "active"
+          }">
+            <a href="#" data-id="all" class="content-xs overline">
+              <span class="js-category">All Categories</span>
+            </a>
+          </div>
       </div>
   </aside>
   `;
@@ -36,24 +44,31 @@ function render() {
 function menuItemListener() {
   const menuItems = document.querySelectorAll(".js-menu-categories");
   menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", (event) => {
+    menuItem.addEventListener("click", async (event) => {
       const menuItemLink = event.target.closest("[data-id]");
       if (!menuItemLink) return;
       const id = menuItemLink.dataset.id;
-      categoriesProvider.currentCategory = id;
+
       productsProvider.status = "loading";
+
       DOMHandler.reload();
-      productsProvider
-        .fecthProductsByCategories()
-        .then(() => {
-          productsProvider.status = "success";
-          productsProvider.queryValue = "";
-          DOMHandler.reload();
-        })
-        .catch((error) => {
-          productsProvider.status = "error";
-          console.log(error);
-        });
+
+      try {
+        if (id === "all") {
+          categoriesProvider.currentCategory = null;
+          await productsProvider.fecthProducts();
+        } else {
+          categoriesProvider.currentCategory = id;
+          await productsProvider.fecthProductsByCategories();
+        }
+        productsProvider.status = "success";
+        productsProvider.queryValue = "";
+        DOMHandler.reload();
+      } catch (error) {
+        productsProvider.status = "error";
+        console.log(error);
+        DOMHandler.reload();
+      }
     })
   );
 }
