@@ -4,28 +4,44 @@ import DOMHandler from "../dom-handler.js";
 import { debounce } from "../utils.js";
 
 function render() {
-  const query = localStorage.getItem("query");
+  const categories = categoriesProvider.categories;
+
   return `
   <div class="inputs-wrapper">
     <div class="input-container search-input">
-      <input placeholder="Search by name in all categories ..." class="js-search-input" value=${
-        query || ""
+      <input placeholder="Search by name ..." class="js-search-input" value=${
+        productsProvider.queryValue || ""
       }>
       <img src="assets/search-icon.svg" alt="search" class="right-icon">
     </div>
-    <input type="select">
+    <select id="category" name="categories" class="select-input js-category-select">
+      <option value="" ${
+        categoriesProvider.currentCategory ? "" : "selected"
+      }> All Categories</option>
+      
+      ${categories
+        .map((category) => {
+          return `<option ${
+            +category.id === +categoriesProvider.currentCategory
+              ? "selected"
+              : ""
+          } value=${category.id}>${category.name}</option>`;
+        })
+        .join("")}
+    </select>
   </div>
   `;
 }
-function search(query) {
-  localStorage.setItem("query", query);
+function search() {
   productsProvider.status = "loading";
   DOMHandler.reload();
   productsProvider
-    .fecthProductsByName(query)
+    .fecthProductsBySearch(
+      productsProvider.queryValue,
+      categoriesProvider.currentCategory
+    )
     .then(() => {
       productsProvider.status = "success";
-      categoriesProvider.currentCategory = null;
       DOMHandler.reload();
     })
     .catch((error) => {
@@ -36,9 +52,18 @@ function search(query) {
 
 function inputListener() {
   const input = document.querySelector(".js-search-input");
-  const debouncedOnInput = debounce(search, 2000);
+  const debouncedSearch = debounce(search, 2000);
   input.addEventListener("input", (event) => {
-    debouncedOnInput(event.target.value);
+    productsProvider.queryValue = event.target.value;
+    debouncedSearch();
+  });
+}
+
+function selectListener() {
+  const input = document.querySelector(".js-category-select");
+  input.addEventListener("change", (event) => {
+    categoriesProvider.currentCategory = event.target.value || null;
+    search();
   });
 }
 
@@ -48,6 +73,7 @@ const SearchInput = {
   },
   addListeners() {
     inputListener();
+    selectListener();
   },
 };
 
