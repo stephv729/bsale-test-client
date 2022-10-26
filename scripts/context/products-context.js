@@ -1,4 +1,9 @@
-import { getProductsByCategory, getProductsByName } from "../services/products-services.js";
+import {
+  getProductsByCategory,
+  getProductsByName,
+  getProductsByNameAndCategory,
+} from "../services/products-services.js";
+
 import categoriesProvider from "./categories-context.js";
 
 async function fecthProductsByCategories() {
@@ -9,8 +14,13 @@ async function fecthProductsByCategories() {
   this.status = "success";
 }
 
-async function fecthProductsByName(query) {
-  const products = await getProductsByName(query);
+async function fecthProductsBySearch(query, category_id) {
+  let products;
+  if (!category_id) {
+    products = await getProductsByName(query);
+  } else {
+    products = await getProductsByNameAndCategory(query, category_id);
+  }
   this.products = products;
   this.status = "success";
 }
@@ -18,8 +28,9 @@ async function fecthProductsByName(query) {
 const productsProvider = {
   products: [],
   status: "idle",
+  queryValue: "",
   fecthProductsByCategories,
-  fecthProductsByName,
+  fecthProductsBySearch,
 };
 
 export default productsProvider;
