@@ -20,3 +20,7 @@
 .input-container .right-icon {
   height: 1rem;
 }
+
+.search-input {
+  width: 40rem;
+}
