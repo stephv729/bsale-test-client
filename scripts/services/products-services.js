@@ -1,5 +1,8 @@
 import apiFetch from "./api-fetch.js";
 
+export async function getProducts() {
+  return await apiFetch("/products");
+}
 export async function getProductsByCategory(categoryId) {
   return await apiFetch("/categories/" + categoryId + "/products");
 }
