@@ -41,6 +41,7 @@ function menuItemListener() {
       if (!menuItemLink) return;
       const id = menuItemLink.dataset.id;
       categoriesProvider.currentCategory = id;
+      localStorage.removeItem("query");
       productsProvider.status = "loading";
       DOMHandler.reload();
       productsProvider
