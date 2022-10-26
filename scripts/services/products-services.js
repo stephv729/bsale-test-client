@@ -5,9 +5,5 @@ export async function getProductsByCategory(category_id) {
 }
 
 export async function getProductsByName(name) {
-  return apiFetch("/search", { method: "GET", body: { name: name } }).then(
-    (data) => {
-      return data;
-    }
-  );
+  return await apiFetch(`/search?name=${name}`);
 }
