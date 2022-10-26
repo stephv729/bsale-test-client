@@ -46,11 +46,13 @@ function render() {
   ${status === "loading" ? Loader : ""}
   ${
     status === "success"
-      ? products
-          .map((product) => {
-            return renderProduct(product);
-          })
-          .join("")
+      ? products.length === 0
+        ? "<div>Sorry, we couldn't find any results</div>"
+        : products
+            .map((product) => {
+              return renderProduct(product);
+            })
+            .join("")
       : ""
   }
   ${
