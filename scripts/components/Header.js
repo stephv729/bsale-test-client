@@ -12,6 +12,9 @@ const Header = {
   toString() {
     return render();
   },
+  addListeners() {
+    SearchInput.addListeners();
+  },
 };
 
 export default Header;
