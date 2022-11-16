@@ -4,7 +4,7 @@
 This is a simple single page web app build with Vanilla Javascript. 
 It allows users to see products filtered by category.
 
-It relies on BSale_Test API to connect with database. 
+It relies on BSale_Test API to connect to database. 
 To check the API, please go to https://github.com/stephv729/bsale-test-api.
 
 
